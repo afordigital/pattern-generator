@@ -11,12 +11,15 @@ export const DEFAULT_PATTERN: Pattern = {
 
 export const PatternProvider = ({ children }: { children: ReactNode }) => {
   const [pattern, setPattern] = useState<Pattern>(DEFAULT_PATTERN);
+  const [element, setElement] = useState<HTMLElement | null>(null);
 
   return (
     <PatternContext.Provider
       value={{
         pattern,
         setPattern,
+        element,
+        setElement,
       }}
     >
       {children}

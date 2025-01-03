@@ -37,11 +37,36 @@ export const StyleConfig = () => {
         <Input
           type="range"
           value={pattern.opacity * 100}
-          className="max-w-[75px]"
+          className="max-w-[200px]"
           onChange={(event) => {
             const root = document.documentElement;
-            root.style.setProperty("--bg-opacity", event.target.value / 100);
-            setPattern({ ...pattern, opacity: event.target.value / 100 });
+            root.style.setProperty(
+              "--bg-opacity",
+              (event.target.valueAsNumber / 100).toString()
+            );
+            setPattern({
+              ...pattern,
+              opacity: event.target.valueAsNumber / 100,
+            });
+          }}
+        />
+      </label>
+      <label className="flex items-center gap-2 w-fit">
+        <p className="whitespace-nowrap">Spacing</p>
+        <Input
+          type="range"
+          value={pattern.spacing}
+          className="max-w-[200px]"
+          onChange={(event) => {
+            const root = document.documentElement;
+            root.style.setProperty(
+              "--bg-spacing",
+              event.target.valueAsNumber.toString()
+            );
+            setPattern({
+              ...pattern,
+              spacing: event.target.valueAsNumber,
+            });
           }}
         />
       </label>

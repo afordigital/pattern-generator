@@ -11,6 +11,7 @@
   --front-color: #6c63ff;
   --bg-color: #f0f0f0;
   --bg-opacity: 0.2;
+  --bg-spacing: 0.2;
 }
 
 .square {
@@ -30,7 +31,7 @@
       var(--front-color) 75%,
       var(--front-color)
     );
-  background-size: 50px 50px; /* Tamaño del patrón */
+  background-size: calc(var(--bg-spacing) * 1px) calc(var(--bg-spacing) * 1px);
   opacity: var(--bg-opacity);
 }
 
@@ -44,17 +45,17 @@
     var(--front-color) 75%,
     var(--front-color)
   );
-  background-size: 50px 50px;
+  background-size: calc(var(--bg-spacing) * 1px) calc(var(--bg-spacing) * 1px);
   opacity: var(--bg-opacity);
 }
 
 .waves {
   background-color: var(--bg-color);
-  opacity: 0.2;
   background-image: repeating-radial-gradient(
       circle at 0 0,
       transparent 0,
-      var(--bg-color) 10px
+      var(--bg-color) calc(var(--bg-spacing) * 1px)
     ),
     repeating-linear-gradient(var(--front-color), var(--front-color));
+  opacity: var(--bg-opacity);
 }

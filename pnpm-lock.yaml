@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@pheralb/toast':
+    specifier: ^0.2.3
+    version: 0.2.3(react-dom@18.3.1)(react@18.3.1)
   '@radix-ui/react-slot':
     specifier: ^1.1.1
     version: 1.1.1(@types/react@18.3.18)(react@18.3.1)
@@ -450,6 +453,16 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.18.0
+
+  /@pheralb/toast@0.2.3(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-DbHMjg9vxUZfZpRBx033Idb5qm+NOv61qM7qFVQcIDfBMxQ5mD3TFzWFCJA3xnEhTW7k6enhCMKvhP8iL3XlSA==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    dev: false
 
   /@pkgjs/parseargs@0.11.0:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}

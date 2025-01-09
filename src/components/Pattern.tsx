@@ -1,10 +1,11 @@
 import { usePatternContext } from "@/context/usePatternContext";
 import { toPng } from "html-to-image";
-import { useState } from "react";
+import { Button } from "./ui/button";
+import { Copy, Download } from "lucide-react";
+import { toast } from "@pheralb/toast";
 
 export const Pattern = ({ patternName }: { patternName: string }) => {
   const { pattern, setPattern, element, setElement } = usePatternContext();
-  const [onHover, setOnHover] = useState(false);
 
   const downloadAsPng = async (element: HTMLElement | null) => {
     if (!element) return;
@@ -19,31 +20,37 @@ export const Pattern = ({ patternName }: { patternName: string }) => {
   return (
     <section
       ref={patternName === pattern.name ? setElement : () => {}}
-      className="w-[200px] border border-slate-200 h-[200px] bg-white rounded-lg shadow-lg"
+      className="group/item relative w-full border border-slate-200 h-[200px] bg-white rounded-lg shadow-lg"
     >
       <div
         onClick={() => {
           setPattern({ ...pattern, name: patternName });
         }}
-        onMouseEnter={() => setOnHover(true)}
-        onMouseLeave={() => setOnHover(false)}
         className={`w-full h-full ${patternName}`}
-      >
-        {onHover && (
-          <div className="flex gap-4 bg-white">
-            <button className="hover:bg-slate-300" onClick={() => {}}>
-              Download css
-            </button>
-            <button
-              onClick={() => {
-                downloadAsPng(element);
-              }}
-              className="hover:bg-slate-300"
-            >
-              Download png
-            </button>
-          </div>
-        )}
+      />
+
+      <div className="absolute left-0 right-0 flex justify-center invisible gap-4 mx-auto top-2 group/edit group-hover/item:visible">
+        <Button
+          variant="secondary"
+          onClick={() => {
+            toast.success({
+              text: "✨ CSS copied to clipboard",
+              theme: "light",
+            });
+          }}
+        >
+          <Copy />
+          CSS
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            downloadAsPng(element);
+          }}
+        >
+          <Download />
+          PNG
+        </Button>
       </div>
     </section>
   );
